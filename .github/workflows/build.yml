@@ -10,10 +10,11 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 env:
   ZIP_NAME: neverlose
-  # Set under Settings -> Secrets and variables -> Actions -> Variables
+  # Set under Settings -> Secrets and variables -> Actions -> Variables (value: 913)
   MARKETPLACE_ITEM_ID: ${{ vars.MARKETPLACE_ITEM_ID }}
 
 jobs:
@@ -64,25 +65,26 @@ jobs:
           set -euo pipefail
           if ! gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
             gh release create "${GITHUB_REF_NAME}" \
-              --title "${ZIP_NAME} ${VERSION}" \
-              --notes "Automated build of ${GITHUB_REF_NAME} from ${GITHUB_SHA}"
+              --title "${ZIP_NAME}${VERSION}" \
+              --notes "Automated build of ${GITHUB_REF_NAME} from${GITHUB_SHA}"
           fi
           gh release upload "${GITHUB_REF_NAME}" "${ZIP_NAME}-${VERSION}.zip" --clobber
 
       - name: Upload to LiquidBounce Marketplace
-        if: (github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')) && env.MARKETPLACE_ITEM_ID != '' && env.API_TOKEN != ''
-        env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+        if: (github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')) && env.MARKETPLACE_ITEM_ID != ''
         run: |
           set -euo pipefail
+          OIDC_TOKEN=$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=https://api.liquidbounce.net" \
+            | jq -r '.value')
+
           api="https://api.liquidbounce.net/marketplace/items/${MARKETPLACE_ITEM_ID}/revisions"
           curl -fsS -X POST "${api}" \
-            -H "Authorization: Bearer ${API_TOKEN}" \
+            -H "Authorization: Bearer ${OIDC_TOKEN}" \
             -F "file=@${ZIP_NAME}-${VERSION}.zip" \
             -F "version=${VERSION}" \
             -F "changelog=$(git log -1 --format=%s)" \
             -F "sourceRepository=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" \
             -F "sourceRef=${GITHUB_REF_NAME}" \
             -F "sourceCommit=${GITHUB_SHA}" \
-            -F "sourceBuildUrl=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
-            | jq '{id, version, status}'
+            -F "sourceBuildUrl=${GITHUB_SERVER
