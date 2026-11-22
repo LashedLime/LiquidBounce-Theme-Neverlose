@@ -14,7 +14,7 @@ permissions:
 
 env:
   ZIP_NAME: neverbounce
-  MARKETPLACE_ITEM_ID: ${{ vars.MARKETPLACE_ITEM_ID }}
+  MARKETPLACE_ITEM_ID: '913'
 
 jobs:
   build:
@@ -70,9 +70,10 @@ jobs:
           gh release upload "${GITHUB_REF_NAME}" "${ZIP_NAME}-${VERSION}.zip" --clobber
 
       - name: Upload to LiquidBounce Marketplace
-        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')
         run: |
           set -euo pipefail
+          echo "Ref: ${GITHUB_REF} | Ref type: ${GITHUB_REF_TYPE} | Item ID: ${MARKETPLACE_ITEM_ID}"
+
           OIDC_TOKEN=$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=https://api.liquidbounce.net" \
             | jq -r '.value')
