@@ -13,8 +13,7 @@ permissions:
   id-token: write
 
 env:
-  ZIP_NAME: neverlose
-  # Set under Settings -> Secrets and variables -> Actions -> Variables (value: 913)
+  ZIP_NAME: neverbounce
   MARKETPLACE_ITEM_ID: ${{ vars.MARKETPLACE_ITEM_ID }}
 
 jobs:
@@ -47,7 +46,6 @@ jobs:
             version="build-$(git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)"
           fi
           echo "VERSION=${version}" >> "${GITHUB_ENV}"
-          # Theme files go at the archive root, the way the client unpacks them
           (cd dist && zip -r "../${ZIP_NAME}-${version}.zip" . -x '*.map')
           ls -lh "${ZIP_NAME}-${version}.zip"
 
@@ -65,8 +63,8 @@ jobs:
           set -euo pipefail
           if ! gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
             gh release create "${GITHUB_REF_NAME}" \
-              --title "${ZIP_NAME}${VERSION}" \
-              --notes "Automated build of ${GITHUB_REF_NAME} from${GITHUB_SHA}"
+              --title "${ZIP_NAME} ${VERSION}" \
+              --notes "Automated build of ${GITHUB_REF_NAME} from ${GITHUB_SHA}"
           fi
           gh release upload "${GITHUB_REF_NAME}" "${ZIP_NAME}-${VERSION}.zip" --clobber
 
@@ -87,4 +85,5 @@ jobs:
             -F "sourceRepository=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" \
             -F "sourceRef=${GITHUB_REF_NAME}" \
             -F "sourceCommit=${GITHUB_SHA}" \
-            -F "sourceBuildUrl=${GITHUB_SERVER
+            -F "sourceBuildUrl=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            | jq '{id, version, status}'
