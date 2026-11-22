@@ -1,0 +1,39 @@
+.noUi-handle {
+    background-color: var(--clickgui-slider-handle-color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--clickgui-slider-fill-color) 35%, transparent);
+    border: none;
+    border-radius: 50%;
+    height: 11px !important;
+    width: 11px !important;
+    transform: none;
+    cursor: grab;
+    transition: box-shadow 0.15s ease;
+
+    &:hover {
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--clickgui-slider-fill-color) 55%, transparent);
+    }
+}
+
+.noUi-horizontal .noUi-handle {
+    right: -5.5px;
+    top: -4px;
+}
+
+.noUi-handle::after,
+.noUi-handle::before {
+    display: none;
+}
+
+.noUi-target {
+    margin: 0;
+    height: 3px;
+    border: none;
+    background-color: var(--clickgui-slider-track-color);
+    border-radius: 3px;
+    box-shadow: unset;
+}
+
+.noUi-connect {
+    background-color: var(--clickgui-slider-fill-color);
+    border-radius: 3px;
+}

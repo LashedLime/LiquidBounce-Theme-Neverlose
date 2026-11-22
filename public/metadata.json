@@ -1,0 +1,70 @@
+{
+  "id": "neverlose",
+  "name": "Neverlose",
+  "version": "0.1.0",
+  "authors": ["LashedLime"],
+  "splash": {
+    "animation": "splash/animation.json",
+    "background": "#0a0a0e",
+    "text": "#ffffff",
+    "accent": "#4f7dff"
+  },
+  "colors": {
+    "Accent": "#4f7dff",
+    "Tint": "#0a0a0e"
+  },
+  "screens": [
+    "clickgui",
+    "title",
+    "proxymanager",
+    "multiplayer",
+    "altmanager",
+    "customize",
+    "singleplayer"
+  ],
+  "overlays": [
+    "basicmenu",
+    "hud",
+    "inventory",
+    "container",
+    "connecting",
+    "disconnected",
+    "browser"
+  ],
+  "components": [
+    "Watermark",
+    "TabGui",
+    "ArrayList",
+    "Notifications",
+    "Hotbar",
+    "Scoreboard",
+    "ArmorItems",
+    "InventoryStatistics",
+    "Inventory",
+    "CraftingInventory",
+    "EnderChestInventory",
+    "TargetHud",
+    "BlockCounter",
+    "Effects",
+    "Keystrokes",
+    "Taco",
+    "Image",
+    "Text",
+    "KeyBinds",
+    "ClosedCaptions"
+  ],
+  "fonts": [
+    "Inter-Black.ttf",
+    "Inter-Bold.ttf",
+    "Inter-ExtraBold.ttf",
+    "Inter-ExtraLight.ttf",
+    "Inter-Light.ttf",
+    "Inter-Medium.ttf",
+    "Inter-Regular.ttf",
+    "Inter-SemiBold.ttf",
+    "Inter-Thin.ttf"
+  ],
+  "nativeFont": "Inter Medium",
+  "backgrounds": [],
+  "values": []
+}
