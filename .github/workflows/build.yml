@@ -70,6 +70,7 @@ jobs:
           gh release upload "${GITHUB_REF_NAME}" "${ZIP_NAME}-${VERSION}.zip" --clobber
 
       - name: Upload to LiquidBounce Marketplace
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
           set -euo pipefail
           echo "Ref: ${GITHUB_REF} | Ref type: ${GITHUB_REF_TYPE} | Item ID: ${MARKETPLACE_ITEM_ID}"
