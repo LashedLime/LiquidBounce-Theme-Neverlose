@@ -10,11 +10,11 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 env:
-  ZIP_NAME: neverlose
-  # Set under Settings -> Secrets and variables -> Actions -> Variables
-  MARKETPLACE_ITEM_ID: ${{ vars.MARKETPLACE_ITEM_ID }}
+  ZIP_NAME: neverbounce
+  MARKETPLACE_ITEM_ID: '913'
 
 jobs:
   build:
@@ -70,19 +70,30 @@ jobs:
           gh release upload "${GITHUB_REF_NAME}" "${ZIP_NAME}-${VERSION}.zip" --clobber
 
       - name: Upload to LiquidBounce Marketplace
-        if: (github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')) && env.MARKETPLACE_ITEM_ID != '' && env.API_TOKEN != ''
-        env:
-          API_TOKEN: ${{ secrets.API_TOKEN }}
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
           set -euo pipefail
+          echo "Ref: ${GITHUB_REF} | Ref type: ${GITHUB_REF_TYPE} | Item ID: ${MARKETPLACE_ITEM_ID}"
+
+          OIDC_TOKEN=$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=https://api.liquidbounce.net" \
+            | jq -r '.value')
+
           api="https://api.liquidbounce.net/marketplace/items/${MARKETPLACE_ITEM_ID}/revisions"
-          curl -fsS -X POST "${api}" \
-            -H "Authorization: Bearer ${API_TOKEN}" \
+          response=$(curl -sS -w "\n%{http_code}" -X POST "${api}" \
+            -H "Authorization: Bearer ${OIDC_TOKEN}" \
             -F "file=@${ZIP_NAME}-${VERSION}.zip" \
             -F "version=${VERSION}" \
             -F "changelog=$(git log -1 --format=%s)" \
             -F "sourceRepository=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" \
             -F "sourceRef=${GITHUB_REF_NAME}" \
             -F "sourceCommit=${GITHUB_SHA}" \
-            -F "sourceBuildUrl=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
-            | jq '{id, version, status}'
+            -F "sourceBuildUrl=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}")
+
+          http_code=$(echo "${response}" | tail -n1)
+          body=$(echo "${response}" | sed '$d')
+          echo "HTTP ${http_code}: ${body}"
+
+          if [ "${http_code}" -lt 200 ] || [ "${http_code}" -ge 300 ]; then
+            exit 1
+          fi
