@@ -70,7 +70,7 @@ jobs:
           gh release upload "${GITHUB_REF_NAME}" "${ZIP_NAME}-${VERSION}.zip" --clobber
 
       - name: Upload to LiquidBounce Marketplace
-        if: (github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')) && env.MARKETPLACE_ITEM_ID != ''
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/')
         run: |
           set -euo pipefail
           OIDC_TOKEN=$(curl -fsS -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
