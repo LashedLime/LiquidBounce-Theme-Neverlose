@@ -57,7 +57,7 @@ Revisions are built and uploaded by GitHub Actions, triggered by a GitHub releas
    - **Variable** `MARKETPLACE_ITEM_ID` — the theme's resource ID
    - **Secret** `API_TOKEN` — the API token
 3. Bump `version` in `public/metadata.json` and commit it.
-4. Publish a GitHub release tagged `v<version>`, for example `v0.1.0`.
+4. Push a version tag, for example `git tag v0.1.0 && git push origin v0.1.0` — the workflow creates the GitHub release for it and publishes that release.
 
 `.github/workflows/build.yml` then builds `dist/`, packs it as `neverlose-<version>.zip` with the theme files at the archive root, attaches that archive to the release and posts it as a marketplace revision. Plain pushes to `main` only build and keep the archive as a workflow artifact, so nothing is published until you cut a release.
 
