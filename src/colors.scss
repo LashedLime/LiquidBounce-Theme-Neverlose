@@ -1,0 +1,347 @@
+:root {
+  /* Foundation */
+  --surface-color: #101116;
+  --text-color: #e4e5ea;
+  --text-dimmed-color: #9a9da6;
+
+  --accent-color: #4f7dff;
+  --accent-hover-color: color-mix(in srgb, var(--accent-color) 74%, white);
+  --accent-subtle-background-color: color-mix(in srgb, var(--accent-color) 15%, transparent);
+
+  --success-color: #46c98c;
+  --error-color: #ef5350;
+  --premium-color: #67d24a;
+  --warning-color: #e5b454;
+  --grid-color: color-mix(in srgb, #ffffff 6%, transparent);
+
+  /* Surfaces */
+  --border-color: color-mix(in srgb, #ffffff 7%, transparent);
+  --border-strong-color: color-mix(in srgb, #ffffff 12%, transparent);
+  --elevated-color: #1d1d28;
+
+  --clickgui-shell-background-color: color-mix(in srgb, #23272c 92%, transparent);
+  --clickgui-main-background-color: color-mix(in srgb, #16181e 98%, transparent);
+  --clickgui-sidebar-background-color: color-mix(in srgb, #1b1e24 96%, transparent);
+  --clickgui-card-background-color: color-mix(in srgb, #16161e 92%, transparent);
+  --clickgui-card-border-color: color-mix(in srgb, #ffffff 5%, transparent);
+  --clickgui-card-divider-color: #1d1e26;
+  --clickgui-section-label-color: #5c5e66;
+
+  --clickgui-nav-item-color: #a3a3a8;
+  --clickgui-nav-item-active-text-color: #f2f2f2;
+  --clickgui-nav-item-active-background-color: #35363e;
+  --clickgui-nav-item-active-icon-color: var(--accent-color);
+  --clickgui-logo-shadow-color: #2a417d;
+  --clickgui-module-settings-color: #d6d6db;
+
+  /* ClickGUI */
+  --clickgui-base-color: var(--surface-color);
+  --clickgui-text-color: var(--text-color);
+  --clickgui-text-dimmed-color: var(--text-dimmed-color);
+  --clickgui-grid-color: var(--grid-color);
+
+  --clickgui-base-30-color: color-mix(in srgb, var(--clickgui-base-color) 30%, transparent);
+  --clickgui-base-36-color: color-mix(in srgb, var(--clickgui-base-color) 36%, transparent);
+  --clickgui-base-50-color: color-mix(in srgb, var(--clickgui-base-color) 50%, transparent);
+  --clickgui-base-60-color: color-mix(in srgb, var(--clickgui-base-color) 60%, transparent);
+  --clickgui-base-70-color: color-mix(in srgb, var(--clickgui-base-color) 70%, transparent);
+  --clickgui-base-80-color: color-mix(in srgb, var(--clickgui-base-color) 80%, transparent);
+  --clickgui-base-85-color: color-mix(in srgb, var(--clickgui-base-color) 85%, transparent);
+  --clickgui-base-90-color: color-mix(in srgb, var(--clickgui-base-color) 90%, transparent);
+
+  --clickgui-description-background-color: color-mix(in srgb, #1d1d28 96%, transparent);
+  --clickgui-description-shadow-color: color-mix(in srgb, black 60%, transparent);
+  --clickgui-description-arrow-color: var(--clickgui-description-background-color);
+
+  --clickgui-overlay-background-color: color-mix(in srgb, black 55%, transparent);
+  --clickgui-panel-shadow-color: color-mix(in srgb, black 55%, transparent);
+  --clickgui-panel-header-background-color: color-mix(in srgb, #1d1d28 96%, transparent);
+  --clickgui-panel-header-border-color: var(--border-color);
+  --clickgui-panel-body-background-color: color-mix(in srgb, #17181f 96%, transparent);
+  --clickgui-panel-toggle-icon-color: var(--clickgui-text-dimmed-color);
+
+  --clickgui-module-hover-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --clickgui-module-highlight-color: var(--accent-color);
+  --clickgui-module-enabled-color: var(--clickgui-text-color);
+  --clickgui-module-settings-background-color: color-mix(in srgb, #ffffff 3%, transparent);
+  --clickgui-module-settings-border-color: transparent;
+
+  --clickgui-search-background-color: color-mix(in srgb, #1d1d28 96%, transparent);
+  --clickgui-search-shadow-color: color-mix(in srgb, black 55%, transparent);
+  --clickgui-search-border-color: var(--border-color);
+  --clickgui-search-enabled-color: var(--accent-color);
+  --clickgui-search-alias-color: color-mix(in srgb, var(--clickgui-text-dimmed-color) 70%, transparent);
+  --clickgui-search-hint-color: color-mix(in srgb, var(--clickgui-text-color) 30%, transparent);
+
+  --clickgui-tabs-background-color: color-mix(in srgb, #121216 94%, transparent);
+  --clickgui-tabs-shadow-color: color-mix(in srgb, black 55%, transparent);
+  --clickgui-tab-hover-background-color: color-mix(in srgb, #ffffff 5%, transparent);
+  --clickgui-tab-active-background-color: #35363e;
+  --clickgui-tab-active-border-color: transparent;
+
+  --clickgui-window-background-color: color-mix(in srgb, #121216 95%, transparent);
+  --clickgui-window-shadow-color: color-mix(in srgb, black 55%, transparent);
+  --clickgui-window-header-background-color: color-mix(in srgb, var(--elevated-color) 96%, transparent);
+  --clickgui-window-header-border-color: var(--border-color);
+
+  --clickgui-global-settings-divider-color: var(--border-color);
+  --clickgui-input-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --clickgui-input-border-color: var(--border-color);
+  --clickgui-button-background-color: var(--accent-color);
+  --clickgui-button-hover-background-color: var(--accent-hover-color);
+  --clickgui-setting-group-border-color: var(--border-color);
+  --clickgui-dropdown-trigger-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --clickgui-dropdown-background-color: var(--elevated-color);
+  --clickgui-dropdown-border-color: var(--border-color);
+  --clickgui-dropdown-option-color: var(--clickgui-text-dimmed-color);
+  --clickgui-dropdown-option-hover-color: var(--clickgui-text-color);
+  --clickgui-dropdown-option-selected-color: var(--accent-color);
+  --clickgui-selection-chip-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --clickgui-selection-chip-color: var(--clickgui-text-dimmed-color);
+  --clickgui-selection-chip-selected-background-color: var(--accent-subtle-background-color);
+  --clickgui-selection-chip-selected-color: color-mix(in srgb, var(--accent-color) 40%, white);
+  --clickgui-selection-chip-remove-background-color: color-mix(in srgb, var(--error-color) 14%, transparent);
+  --clickgui-selection-chip-remove-color: var(--error-color);
+  --clickgui-switch-track-color: #2b2e34;
+  --clickgui-switch-thumb-color: #7d8791;
+  --clickgui-switch-track-active-color: var(--accent-color);
+  --clickgui-switch-thumb-active-color: #ffffff;
+  --clickgui-slider-track-color: color-mix(in srgb, #ffffff 9%, transparent);
+  --clickgui-slider-handle-color: #ffffff;
+  --clickgui-slider-fill-color: var(--accent-color);
+  --clickgui-color-picker-border-color: var(--border-color);
+  --clickgui-curve-accent-color: var(--accent-color);
+  --clickgui-curve-grid-color: var(--clickgui-grid-color);
+  --clickgui-curve-axis-color: var(--clickgui-text-dimmed-color);
+
+  --clickgui-hud-editor-grid-color: var(--clickgui-grid-color);
+  --clickgui-hud-editor-anchor-zone-border-color: color-mix(in srgb, var(--clickgui-text-color) 12%, transparent);
+  --clickgui-hud-editor-anchor-zone-background-color: color-mix(in srgb, var(--clickgui-text-color) 3%, transparent);
+  --clickgui-hud-editor-anchor-zone-active-border-color: var(--accent-color);
+  --clickgui-hud-editor-anchor-zone-active-background-color: color-mix(in srgb, var(--accent-color) 16%, transparent);
+  --clickgui-hud-editor-anchor-point-color: var(--clickgui-text-dimmed-color);
+  --clickgui-hud-editor-anchor-point-active-color: var(--accent-color);
+  --clickgui-hud-editor-anchor-point-active-ring-color: var(--accent-color);
+  --clickgui-hud-editor-anchor-point-active-shadow-color: color-mix(in srgb, var(--accent-color) 75%, transparent);
+  --clickgui-hud-editor-magnetic-guide-color: var(--accent-color);
+  --clickgui-hud-editor-magnetic-guide-shadow-color: color-mix(in srgb, var(--accent-color) 70%, transparent);
+  --clickgui-hud-editor-magnetic-reference-background-color: color-mix(in srgb, var(--accent-color) 55%, transparent);
+  --clickgui-hud-editor-draggable-element-outline-color: var(--accent-color);
+  --clickgui-hud-editor-draggable-element-background-color: color-mix(in srgb, var(--accent-color) 30%, transparent);
+  --clickgui-hud-editor-draggable-element-position-outline-color: var(--accent-color);
+  --clickgui-hud-editor-draggable-element-position-background-color: color-mix(in srgb, var(--accent-color) 30%, transparent);
+  --clickgui-hud-editor-component-settings-background-color: color-mix(in srgb, #121216 95%, transparent);
+  --clickgui-hud-editor-component-settings-shadow-color: var(--clickgui-panel-shadow-color);
+  --clickgui-hud-editor-drawer-toggle-button-background-color: var(--accent-color);
+  --clickgui-hud-editor-drawer-toggle-button-color: var(--text-color);
+  --clickgui-hud-editor-drawer-background-color: color-mix(in srgb, #121216 95%, transparent);
+  --clickgui-hud-editor-drawer-shadow-color: var(--clickgui-panel-shadow-color);
+  --clickgui-hud-editor-drawer-component-background-color: color-mix(in srgb, #ffffff 3%, transparent);
+  --clickgui-hud-editor-drawer-component-border-color: var(--border-color);
+  --clickgui-hud-editor-drawer-component-hover-background-color: var(--accent-subtle-background-color);
+  --clickgui-hud-editor-drawer-component-hover-border-color: var(--accent-color);
+  --clickgui-hud-editor-drawer-component-name-color: var(--clickgui-text-color);
+  --clickgui-hud-editor-drawer-component-description-color: var(--clickgui-text-dimmed-color);
+
+  /* Menu */
+  --menu-base-color: #16161e;
+  --menu-text-color: var(--text-color);
+  --menu-text-dimmed-color: var(--text-dimmed-color);
+  --menu-panel-border-color: color-mix(in srgb, #ffffff 8%, transparent);
+  --menu-panel-shadow-color: color-mix(in srgb, black 55%, transparent);
+  --menu-error-color: var(--error-color);
+  --menu-account-premium-color: var(--premium-color);
+  --menu-button-loader-color: var(--menu-text-color);
+
+  --menu-base-36-color: color-mix(in srgb, var(--menu-base-color) 36%, transparent);
+  --menu-base-50-color: color-mix(in srgb, var(--menu-base-color) 50%, transparent);
+  --menu-base-68-color: color-mix(in srgb, var(--menu-base-color) 68%, transparent);
+  --menu-base-70-color: color-mix(in srgb, var(--menu-base-color) 70%, transparent);
+  --menu-base-80-color: color-mix(in srgb, var(--menu-base-color) 80%, transparent);
+  --menu-base-90-color: color-mix(in srgb, var(--menu-base-color) 90%, transparent);
+
+  --menu-search-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --menu-search-border-color: transparent;
+  --menu-button-container-background-color: color-mix(in srgb, #0d0f15 74%, transparent);
+  --menu-option-bar-background-color: color-mix(in srgb, #0d0f15 74%, transparent);
+  --menu-option-bar-divider-color: color-mix(in srgb, #ffffff 6%, transparent);
+  --menu-list-background-color: transparent;
+  --menu-list-item-background-color: color-mix(in srgb, #0d0f15 68%, transparent);
+  --menu-list-item-border-color: color-mix(in srgb, #ffffff 7%, transparent);
+  --menu-list-item-hover-background-color: color-mix(in srgb, #ffffff 8%, transparent);
+  --menu-list-item-hover-border-color: color-mix(in srgb, var(--accent-color) 42%, transparent);
+  --menu-list-item-hover-subtitle-color: var(--menu-text-color);
+  --menu-list-tag-background-color: color-mix(in srgb, #ffffff 6%, transparent);
+  --menu-icon-text-button-background-color: transparent;
+  --menu-icon-text-button-accent-color: var(--accent-color);
+  --menu-icon-text-button-icon-background-color: var(--accent-color);
+  --menu-title-button-icon-color: var(--menu-text-color);
+  --menu-title-button-icon-hover-color: var(--accent-color);
+  --menu-main-button-background-color: var(--menu-base-68-color);
+  --menu-main-button-accent-color: var(--accent-color);
+  --menu-main-button-icon-background-color: var(--accent-color);
+  --menu-main-button-icon-hover-background-color: var(--menu-text-color);
+  --menu-main-button-icon-foreground-color: var(--menu-title-button-icon-color);
+  --menu-main-button-icon-hover-foreground-color: var(--menu-title-button-icon-hover-color);
+  --menu-main-button-text-color: var(--menu-text-color);
+  --menu-child-button-background-color: var(--accent-color);
+  --menu-child-button-hover-background-color: var(--menu-text-color);
+  --menu-child-button-icon-color: var(--menu-title-button-icon-color);
+  --menu-child-button-icon-hover-color: var(--menu-title-button-icon-hover-color);
+  --menu-child-button-hover-text-color: var(--accent-color);
+  --menu-input-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --menu-input-divider-color: var(--border-color);
+  --menu-input-error-border-color: var(--menu-error-color);
+  --menu-input-icon-background-color: var(--accent-color);
+  --menu-switch-track-color: var(--clickgui-switch-track-color);
+  --menu-switch-thumb-color: var(--clickgui-switch-thumb-color);
+  --menu-switch-track-active-color: var(--clickgui-switch-track-active-color);
+  --menu-switch-thumb-active-color: var(--clickgui-switch-thumb-active-color);
+  --menu-button-background-color: var(--accent-color);
+  --menu-button-hover-background-color: var(--accent-hover-color);
+  --menu-button-secondary-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --menu-button-secondary-hover-background-color: color-mix(in srgb, #ffffff 8%, transparent);
+  --menu-modal-backdrop-color: color-mix(in srgb, black 55%, transparent);
+  --menu-modal-background-color: color-mix(in srgb, #0b0d13 96%, transparent);
+  --menu-modal-shadow-color: color-mix(in srgb, black 55%, transparent);
+  --menu-modal-title-accent-color: var(--accent-color);
+  --menu-modal-close-border-color: var(--border-strong-color);
+  --menu-modal-close-hover-background-color: color-mix(in srgb, var(--menu-text-color) 10%, transparent);
+  --menu-modal-tab-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --menu-modal-tab-active-border-color: var(--accent-color);
+  --menu-modal-sub-tab-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --menu-modal-sub-tab-active-border-color: var(--accent-color);
+  --menu-select-header-background-color: var(--accent-subtle-background-color);
+  --menu-select-options-background-color: color-mix(in srgb, var(--elevated-color) 96%, transparent);
+  --menu-wrapped-setting-header-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --menu-wrapped-setting-content-background-color: color-mix(in srgb, var(--elevated-color) 92%, transparent);
+  --menu-header-notification-background-color: color-mix(in srgb, #16161e 88%, transparent);
+  --menu-header-notification-icon-background-color: var(--accent-color);
+  --menu-header-notification-icon-error-background-color: var(--menu-error-color);
+  --menu-account-header-background-color: color-mix(in srgb, #0d0f15 76%, transparent);
+  --menu-account-switcher-background-color: color-mix(in srgb, #0b0d13 96%, transparent);
+  --menu-account-search-background-color: color-mix(in srgb, #ffffff 4%, transparent);
+  --menu-account-search-border-color: var(--border-color);
+
+  /* HUD */
+  --hud-panel-border-color: color-mix(in srgb, #ffffff 6%, transparent);
+  --hud-panel-divider-color: color-mix(in srgb, #ffffff 5%, transparent);
+  --hud-panel-shadow-color: color-mix(in srgb, black 40%, transparent);
+
+  --tabgui-base-color: var(--surface-color);
+  --tabgui-text-color: var(--text-color);
+  --tabgui-text-dimmed-color: var(--text-dimmed-color);
+  --tabgui-base-36-color: color-mix(in srgb, var(--tabgui-base-color) 36%, transparent);
+  --tabgui-base-50-color: color-mix(in srgb, #16161e 82%, transparent);
+  --tabgui-base-68-color: color-mix(in srgb, #16161e 88%, transparent);
+  --tabgui-icon-background-color: color-mix(in srgb, #16161e 88%, transparent);
+  --tabgui-category-background-color: color-mix(in srgb, #16161e 82%, transparent);
+  --tabgui-category-active-background-color: var(--accent-color);
+  --tabgui-module-selected-background-color: color-mix(in srgb, #ffffff 8%, transparent);
+  --tabgui-modules-background-color: color-mix(in srgb, #16161e 86%, transparent);
+
+  --arraylist-base-color: var(--surface-color);
+  --arraylist-text-color: var(--text-color);
+  --arraylist-tag-color: var(--text-dimmed-color);
+  --arraylist-background-color: color-mix(in srgb, var(--arraylist-base-color) 82%, transparent);
+  --arraylist-border-color: var(--accent-color);
+  --arraylist-row-shadow-color: color-mix(in srgb, black 35%, transparent);
+
+  --watermark-background-color: color-mix(in srgb, #16161e 88%, transparent);
+  --watermark-border-color: color-mix(in srgb, #ffffff 6%, transparent);
+  --watermark-text-color: var(--text-color);
+  --watermark-subtitle-color: var(--text-dimmed-color);
+  --watermark-shadow-color: color-mix(in srgb, black 40%, transparent);
+
+  --targethud-base-color: var(--surface-color);
+  --targethud-text-color: var(--text-color);
+  --targethud-text-dimmed-color: var(--text-dimmed-color);
+  --targethud-base-30-color: color-mix(in srgb, var(--targethud-base-color) 30%, transparent);
+  --targethud-base-68-color: color-mix(in srgb, var(--targethud-base-color) 68%, transparent);
+  --targethud-background-color: color-mix(in srgb, #16161e 88%, transparent);
+  --targethud-armor-point-background-color: color-mix(in srgb, #ffffff 10%, transparent);
+  --targethud-armor-point-active-color: var(--accent-color);
+  --targethud-health-progress-color: var(--hotbar-health-color);
+
+  --blockcounter-base-color: var(--surface-color);
+  --blockcounter-background-color: color-mix(in srgb, #16161e 84%, transparent);
+
+  --hotbar-base-color: var(--surface-color);
+  --hotbar-text-color: var(--text-color);
+  --hotbar-base-68-color: color-mix(in srgb, var(--hotbar-base-color) 68%, transparent);
+  --hotbar-armor-color: #49ead6;
+  --hotbar-air-color: #aac1e3;
+  --hotbar-absorption-color: #d4af37;
+  --hotbar-experience-color: #88c657;
+  --hotbar-health-color: #fc4130;
+  --hotbar-hunger-color: #b88458;
+  --hotbar-status-background-color: color-mix(in srgb, #16161e 78%, transparent);
+  --hotbar-slot-background-color: color-mix(in srgb, #16161e 78%, transparent);
+  --hotbar-slot-border-color: var(--accent-color);
+  --hotbar-item-name-background-color: color-mix(in srgb, #16161e 88%, transparent);
+
+  --scoreboard-base-color: var(--surface-color);
+  --scoreboard-base-50-color: color-mix(in srgb, var(--scoreboard-base-color) 50%, transparent);
+  --scoreboard-base-68-color: color-mix(in srgb, var(--scoreboard-base-color) 68%, transparent);
+  --scoreboard-header-background-color: color-mix(in srgb, #16161e 90%, transparent);
+  --scoreboard-body-background-color: color-mix(in srgb, #16161e 82%, transparent);
+
+  --keystrokes-base-color: var(--surface-color);
+  --keystrokes-text-color: var(--text-color);
+  --keystrokes-background-color: color-mix(in srgb, #16161e 82%, transparent);
+  --keystrokes-active-color: var(--accent-color);
+
+  --item-damage-base-color: var(--surface-color);
+  --item-damage-background-color: color-mix(in srgb, var(--item-damage-base-color) 78%, transparent);
+  --item-enchant-glow-start-color: rgba(112, 48, 160, 0.8);
+  --item-enchant-glow-end-color: rgba(255, 105, 180, 0);
+  --item-count-shadow-color: #000000;
+  --inventory-background-color: color-mix(in srgb, #16161e 65%, transparent);
+
+  --keybinds-base-color: var(--surface-color);
+  --keybinds-text-color: var(--text-color);
+  --keybinds-enabled-color: var(--accent-color);
+  --keybinds-base-68-color: color-mix(in srgb, #16161e 88%, transparent);
+  --keybinds-text-muted-color: color-mix(in srgb, var(--keybinds-text-color) 60%, transparent);
+  --keybinds-background-color: color-mix(in srgb, #16161e 88%, transparent);
+  --keybinds-header-background-color: color-mix(in srgb, #16161e 82%, transparent);
+  --keybinds-accent-color: var(--accent-color);
+
+  --effects-amplifier-color: var(--accent-color);
+  --effects-name-color: var(--text-color);
+  --effects-background-color: color-mix(in srgb, #16161e 84%, transparent);
+  --effects-duration-color: var(--text-dimmed-color);
+
+  --notification-background-color: color-mix(in srgb, #16161e 90%, transparent);
+  --notification-success-color: var(--success-color);
+  --notification-error-color: var(--error-color);
+  --notification-info-color: var(--accent-color);
+  --notification-toggle-knob-color: var(--text-color);
+  --notification-title-color: var(--text-color);
+  --notification-message-color: var(--text-dimmed-color);
+
+  /* Special visuals */
+  --tooltip-background-color: var(--accent-color);
+  --tooltip-text-color: var(--text-color);
+
+  --animated-logo-banner-start-color: var(--accent-color);
+  --animated-logo-banner-middle-color: color-mix(in srgb, var(--accent-color) 45%, #a5b0ff);
+  --animated-logo-banner-end-color: var(--accent-color);
+  --animated-logo-text-start-color: #dfe3ff;
+  --animated-logo-text-middle-color: #ffffff;
+  --animated-logo-text-end-color: #dfe3ff;
+  --animated-logo-foreground-color: var(--text-color);
+  --animated-logo-divider-color: var(--text-color);
+  --animated-logo-anniversary-highlight-color: var(--warning-color);
+  --animated-logo-glow-primary-color: color-mix(in srgb, var(--accent-color) 22%, transparent);
+  --animated-logo-glow-secondary-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
+
+  --confetti-color-1: #4f7dff;
+  --confetti-color-2: #8f9bff;
+  --confetti-color-3: #67d24a;
+  --confetti-color-4: #ffd166;
+  --confetti-color-5: #ffffff;
+  --confetti-color-6: #8ad9ff;
+  --confetti-color-7: #ff8fab;
+  --confetti-shadow-color: rgba(255, 255, 255, 0.12);
+}

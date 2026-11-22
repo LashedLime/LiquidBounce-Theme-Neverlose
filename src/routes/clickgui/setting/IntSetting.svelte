@@ -1,0 +1,103 @@
+<script lang="ts">
+    import "nouislider/dist/nouislider.css";
+    import "./nouislider.scss";
+    import {createEventDispatcher, onMount} from "svelte";
+    import noUiSlider, {type API} from "nouislider";
+    import type {IntSetting, ModuleSetting} from "../../../integration/types";
+    import ValueInput from "./common/ValueInput.svelte";
+    import {convertToSpacedString, spaceSeperatedNames} from "../../../theme/theme_config";
+
+    export let setting: ModuleSetting;
+
+    const cSetting = setting as IntSetting;
+
+    const dispatch = createEventDispatcher();
+
+    let slider: HTMLElement;
+    let apiSlider: API;
+
+    onMount(() => {
+        // The value can sit outside the declared range (e.g. set through the `.value` command),
+        // so widen the slider instead of letting noUiSlider clamp it away.
+        const min = Math.min(cSetting.range.from, cSetting.value);
+        const max = Math.max(cSetting.range.to, cSetting.value);
+
+        apiSlider = noUiSlider.create(slider, {
+            start: cSetting.value,
+            connect: "lower",
+            range: {
+                min,
+                max,
+            },
+            step: 1,
+        });
+
+        apiSlider.on("update", (values) => {
+            const newValue = parseInt(values[0].toString());
+
+            cSetting.value = newValue;
+            setting = { ...cSetting };
+        });
+
+        apiSlider.on("set", () => {
+            dispatch("change");
+        });
+    });
+</script>
+
+<div class="setting" class:has-suffix={cSetting.suffix !== ""}>
+    <div class="name">{$spaceSeperatedNames ? convertToSpacedString(cSetting.name) : cSetting.name}</div>
+    <div bind:this={slider} class="slider"></div>
+    <div class="value">
+        <ValueInput valueType="int" value={cSetting.value}
+                    on:change={(e) => apiSlider.set(e.detail.value)}/>
+    </div>
+    {#if cSetting.suffix !== ""}
+        <div class="suffix">{cSetting.suffix}</div>
+    {/if}
+</div>
+
+<style lang="scss">
+
+    .setting {
+        padding: 8px 0;
+        display: grid;
+        grid-template-areas: "a d b";
+        grid-template-columns: max-content minmax(36px, 1fr) max-content;
+        align-items: center;
+        column-gap: 8px;
+    }
+
+    .setting.has-suffix {
+        grid-template-areas: "a d b c";
+        grid-template-columns: max-content minmax(36px, 1fr) max-content max-content;
+    }
+
+    .suffix,
+    .setting,
+    .value {
+        color: var(--clickgui-text-color);
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    .name {
+        grid-area: a;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .value {
+        grid-area: b;
+        color: var(--clickgui-text-dimmed-color);
+    }
+
+    .suffix {
+        grid-area: c;
+        color: var(--clickgui-text-dimmed-color);
+    }
+
+    .slider {
+        grid-area: d;
+    }
+</style>
