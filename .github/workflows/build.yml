@@ -46,6 +46,7 @@ jobs:
             version="build-$(git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)"
           fi
           echo "VERSION=${version}" >> "${GITHUB_ENV}"
+          # Theme files go at the archive root, the way the client unpacks them
           (cd dist && zip -r "../${ZIP_NAME}-${version}.zip" . -x '*.map')
           ls -lh "${ZIP_NAME}-${version}.zip"
 
@@ -77,7 +78,7 @@ jobs:
             | jq -r '.value')
 
           api="https://api.liquidbounce.net/marketplace/items/${MARKETPLACE_ITEM_ID}/revisions"
-          curl -fsS -X POST "${api}" \
+          response=$(curl -sS -w "\n%{http_code}" -X POST "${api}" \
             -H "Authorization: Bearer ${OIDC_TOKEN}" \
             -F "file=@${ZIP_NAME}-${VERSION}.zip" \
             -F "version=${VERSION}" \
@@ -85,5 +86,12 @@ jobs:
             -F "sourceRepository=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" \
             -F "sourceRef=${GITHUB_REF_NAME}" \
             -F "sourceCommit=${GITHUB_SHA}" \
-            -F "sourceBuildUrl=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
-            | jq '{id, version, status}'
+            -F "sourceBuildUrl=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}")
+
+          http_code=$(echo "${response}" | tail -n1)
+          body=$(echo "${response}" | sed '$d')
+          echo "HTTP ${http_code}: ${body}"
+
+          if [ "${http_code}" -lt 200 ] || [ "${http_code}" -ge 300 ]; then
+            exit 1
+          fi
